@@ -1,26 +1,21 @@
 import { useState } from 'react';
 import './App.css';
-import Counter from './components/Counter';
 import PlayButton from './components/PlayButton';
 import Video from './components/Video';
 import videoDB from './data/data';
+import NewVideo from './components/newVideo';
 function App() {
-  console.log('render App')
 
   const [videos,setVideos] = useState(videoDB);
+
+  function addVideos(video){
+    setVideos([...videos,{...video,id: videos.length+1}])
+  }
 
   return (
     <div className="App" onClick={()=>console.log('App')}>
       <div>
-        <button onClick={()=>{
-           setVideos( [...videos,{ id:videos.length+1,
-            title: 'Demo JS tutorial',
-            views: '1M',
-            time: '1 month ago',
-            channel: 'Coder Dost',
-            verified: true
-          }]);
-        }}>Add Video</button>
+        <NewVideo addVideos={addVideos}/>
       </div>
       {videos.map((video) => (
         <Video
@@ -47,7 +42,7 @@ function App() {
         {/* <PlayButton message="pause-msg" onSmash={()=>alert('Playyy')}>Pause</PlayButton> */}
       </div>
 
-      <Counter></Counter>
+
 
     </div>
   );
