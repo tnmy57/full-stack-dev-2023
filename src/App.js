@@ -2,6 +2,7 @@ import './App.css';
 import PlayButton from './components/PlayButton';
 import Video from './components/Video';
 import videos from './data/data';
+import Count from "./components/count"
 function App() {
   return (
     <div className="App" onClick={()=>console.log('App')}>
@@ -30,6 +31,9 @@ function App() {
 
         {/* <PlayButton message="pause-msg" onSmash={()=>alert('Playyy')}>Pause</PlayButton> */}
       </div>
+      
+      <Count/>
+
     </div>
   );
 }
